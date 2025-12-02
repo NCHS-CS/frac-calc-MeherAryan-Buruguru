@@ -1,5 +1,5 @@
-// Student Name
-// Period X
+// Meher Aryan Buruguru
+// Period 6
 // Fraction Calculator Project
 
 import java.util.*;
@@ -45,8 +45,8 @@ public class FracCalc {
    // Return the full line that the user typed in.
    public static String getInput() {
       // TODO: Implement this method
-       return "quit";
-
+      System.out.print("Enter: "); 
+      return console.nextLine();
    }
    
    // processCommand will process every user command except for "quit".
@@ -82,7 +82,7 @@ public class FracCalc {
    public static String processExpression(String input) {
       // TODO: implement this method!
     
-        return "reduced result of expression";
+        return input;
 
    }
    
@@ -91,10 +91,7 @@ public class FracCalc {
    public static String provideHelp() {
       // TODO: Update this help text!
      
-      String help = "You must change this text.\n";
-      help += "Students, you need to provide actual helpful text here!";
-      
-      return help;
+      return "This is a Fraction Calculator. Enter any type of value, and notice your output";
    }
 }
 
