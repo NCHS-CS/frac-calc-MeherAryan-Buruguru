@@ -1,6 +1,7 @@
 // Meher Aryan Buruguru
 // Period 6
 // Fraction Calculator Project
+// Description: This is a Calculator, in which you can enter any type of value, and a certain operation will be done to it. 
 
 import java.util.*;
 
