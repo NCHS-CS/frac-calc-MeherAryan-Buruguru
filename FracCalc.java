@@ -5,7 +5,7 @@
 
 import java.util.*;
 
-// TODO: Description of what this program does goes here.
+// This is a calculator that processes input, parses that input into operators and operands, and returns a value based on the operation and the operands. 
 public class FracCalc {
 
    // It is best if we have only one console object for input
@@ -45,7 +45,6 @@ public class FracCalc {
    // Prompt the user with a simple, "Enter: " and get the line of input.
    // Return the full line that the user typed in.
    public static String getInput() {
-      // TODO: Implement this method
       System.out.print("Enter: "); 
       return console.nextLine();
    }
@@ -82,8 +81,60 @@ public class FracCalc {
    //        2 1/4
    public static String processExpression(String input) {
       // TODO: implement this method!
-    
-        return input;
+      int operandNum = 0;
+      String operand1 = "";
+      String operator = "";
+      String operand2 = "";
+      int denominator = 0;
+      int numerator = 0;
+      int whole = 0;
+      Scanner parser = new Scanner(input);
+      while (parser.hasNext()){
+         if (operandNum == 0){
+         operand1 = parser.next();
+         operandNum++;
+         }
+         else if (operandNum == 1){
+         operator = parser.next();
+         operandNum++;
+         }
+         else if (operandNum == 2){
+         operand2 = parser.next();
+         operandNum++;
+         }
+         else{
+            break;
+         }         
+      }
+      
+      if (operand2.length() == 1){
+         whole = Character.getNumericValue(operand2.charAt(0));
+         denominator = 1;
+      }
+      
+      else if (operand2.charAt(1) == '/' || operand2.charAt(2) == '/' && operand2.length() > 1){
+            denominator = Integer.parseInt(operand2.substring(operand2.indexOf('/') + 1));
+            numerator = Integer.parseInt(operand2.substring(0, operand2.indexOf('/')));
+         }
+      else if (operand2.charAt(1) == '_' && operand2.length() > 1){
+         whole = Character.getNumericValue(operand2.charAt(0));
+         denominator = Character.getNumericValue(operand2.charAt(4));
+         numerator = Character.getNumericValue(operand2.charAt(2));
+      }
+
+      else if ((operand2.charAt(2) == '_' || operand2.charAt(3) == '_') && operand2.length() > 1){
+        whole = Integer.parseInt(operand2.substring(0, operand2.indexOf('_')));
+        numerator = Integer.parseInt(operand2.substring(operand2.indexOf('_') + 1, operand2.indexOf('/')));
+        denominator = Integer.parseInt(operand2.substring(operand2.indexOf('/') + 1));
+      }
+
+      if (Integer.toString(numerator).charAt(0) == '-' && Integer.toString(denominator).charAt(0) == '-'){
+         numerator = Math.abs(numerator);
+         denominator = Math.abs(denominator);
+      } 
+      
+      
+        return "Op:" + operator + " Whole:" + whole + " Num:" + numerator + " Den:" + denominator;
 
    }
    
